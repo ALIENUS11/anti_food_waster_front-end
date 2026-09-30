@@ -1,0 +1,47 @@
+/* 尾厅（hall6 6-1）页面专属样式 */
+.overview-page { display: flex; flex-direction: column; gap: 12px; height: 100%; overflow: hidden; }
+.overview-hero { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: 4px 8px 0; }
+.overview-hero-count { display: flex; align-items: baseline; gap: 8px; white-space: nowrap; }
+.overview-path-panel { overflow: hidden; background: linear-gradient(105deg, var(--color-panel), var(--color-safe-soft)); }
+.overview-track { position: relative; display: block; width: 100%; border: 0; padding: 12px 0 4px; background: transparent; text-align: left; }
+.overview-track-base, .overview-track-progress { position: absolute; top: 34px; left: 7%; height: 3px; border-radius: 999px; }
+.overview-track-base { width: 86%; background: var(--color-line-strong); }
+.overview-track-progress { background: var(--color-brand); transition: width 0.5s ease; }
+.overview-node-list { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.overview-node { display: flex; min-width: 0; flex-direction: column; align-items: center; border: 0; border-radius: 12px; padding: 0 8px 8px; background: transparent; color: inherit; cursor: pointer; text-align: center; transition: transform 0.25s ease, background-color 0.25s ease; }
+.overview-track:hover .overview-node { background: var(--color-hover); }
+.overview-node-mark { display: grid; width: 48px; height: 48px; place-items: center; border: 3px solid var(--color-line-strong); border-radius: 999px; background: var(--color-panel); color: var(--color-ink-subtle); box-shadow: 0 0 0 6px var(--color-panel); transition: all 0.3s ease; }
+.overview-node-passed .overview-node-mark { border-color: var(--color-brand); color: var(--color-brand); }
+.overview-node-active .overview-node-mark { background: var(--color-brand); color: var(--color-white); box-shadow: 0 0 0 6px var(--color-brand-soft), var(--shadow-glow); transform: scale(1.12); }
+.overview-content-grid { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(240px, 0.6fr); gap: 12px; }
+.overview-result-panel, .overview-benefit-panel { min-height: 0; }
+section.overview-result-panel, section.overview-benefit-panel, section.overview-path-panel { padding: 16px; }
+.overview-summary-block, .overview-control-block { border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-raised); padding: 12px; }
+.overview-benefit-block { background: var(--color-brand-soft); }
+.overview-field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.overview-field { display: flex; min-height: 96px; flex-direction: column; justify-content: space-between; gap: 8px; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-raised); padding: 10px; }
+.overview-field-wide { grid-column: 1 / -1; min-height: 80px; background: var(--color-brand-soft); }
+.overview-field span { color: var(--color-ink-subtle); font-size: 16px; }
+.overview-field strong { color: var(--color-ink-muted); font-size: 20px; font-weight: 500; line-height: 1.5; }
+.overview-live-status { display: inline-flex; align-items: center; gap: 8px; color: var(--color-ink-muted); font-size: 14px; }
+.overview-live-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--color-ink-disabled); }
+.overview-live-dot-active { background: var(--color-safe); box-shadow: 0 0 0 4px var(--color-safe-soft); animation: overview-pulse 1.8s ease-in-out infinite; }
+@keyframes overview-pulse { 50% { opacity: 0.45; } }
+@media (max-width: 900px) {
+  .overview-hero { align-items: flex-start; flex-direction: column; }
+  .overview-content-grid { grid-template-columns: 1fr; }
+  .overview-result-panel, .overview-benefit-panel { min-height: auto; }
+}
+@media (max-width: 640px) {
+  .overview-node-list { gap: 4px; }
+  .overview-node { padding-inline: 2px; }
+  .overview-node-mark { width: 38px; height: 38px; box-shadow: 0 0 0 4px var(--color-panel); }
+  .overview-node span:nth-child(2) { font-size: 13px; }
+  .overview-node span:nth-child(3) { display: none; }
+  .overview-field-grid { grid-template-columns: 1fr; }
+  .overview-field-wide { grid-column: auto; }
+}
+
+.overview-metric { display: flex; min-height: 96px; flex-direction: column; justify-content: space-between; gap: 12px; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-raised); padding: 12px; }
+.overview-metric span { color: var(--color-ink-subtle); font-size: 12px; }
+.overview-metric strong { color: var(--color-brand); font-size: 22px; font-weight: 600; line-height: 1.2; }

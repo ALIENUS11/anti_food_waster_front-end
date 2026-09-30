@@ -1,0 +1,120 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   设计令牌 —— 全项目唯一的颜色 / 字体来源
+   ----------------------------------------------------------------------------
+   改颜色、改字号，只改这一个文件，11 个页面一起变。
+   页面里禁止再写 #色值，只能用这里的令牌生成的类名（如 bg-panel / text-ink）。
+
+   主题：浅色（明亮展厅）
+   ============================================================================ */
+@theme {
+  /* 清空 Tailwind 自带色板 —— 防止有人写出 bg-blue-500 / text-gray-400 这类默认色 */
+  --color-*: initial;
+  /* 保留几个必要的 */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-inherit: inherit;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* --- 背景：页面底用浅灰、卡片用纯白，靠这个明度差做出层次 --- */
+  --color-canvas: #f5f7fa; /* 页面最底层（不用纯白，见 UI设计规范 第二节） */
+  --color-panel: #ffffff; /* 卡片、面板（纯白，浮在灰底上） */
+  --color-raised: #eef2f7; /* 表头、选中态 */
+  --color-hover: #e8eef6; /* 悬停态 */
+
+  /* --- 边框（浅色主题下层次主要靠阴影，边框保持很淡）--- */
+  --color-line: #e3e8ef;
+  --color-line-strong: #cbd5e1;
+
+  /* --- 主色：全项目唯一，禁止按区域更换 --- */
+  --color-brand: #1668dc;
+  --color-brand-hover: #3c89e8;
+  --color-brand-active: #1257b8;
+  --color-brand-soft: rgba(22, 104, 220, 0.08);
+
+  /* --- 风险三色：色相与实体沙盘 LED 灯带一致（绿/琥珀/红），明度按浅色底调深 --- */
+  --color-safe: #16a34a;
+  --color-safe-soft: rgba(22, 163, 74, 0.1);
+  --color-warn: #d97706;
+  --color-warn-soft: rgba(217, 119, 6, 0.1);
+  --color-danger: #dc2626;
+  --color-danger-soft: rgba(220, 38, 38, 0.1);
+
+  /* --- 文字四级 --- */
+  --color-ink: #0f172a; /* 标题、关键数值（深蓝灰，不用纯黑） */
+  --color-ink-muted: #475569; /* 正文、说明 */
+  --color-ink-subtle: #64748b; /* 单位、时间戳、口径说明 */
+  --color-ink-disabled: #cbd5e1;
+
+  /* --- 图表色序：多系列按 1→6 顺序取色（已按浅色底调深）--- */
+  --color-chart-1: #1668dc;
+  --color-chart-2: #0891b2;
+  --color-chart-3: #16a34a;
+  --color-chart-4: #d97706;
+  --color-chart-5: #7c3aed;
+  --color-chart-6: #dc2626;
+
+  /* --- 字体：用系统字体栈，展厅离线环境不需要下载字体文件 --- */
+  --font-sans: system-ui, 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace; /* 数字用 */
+
+  /* --- 大屏字号（直接用 text-hero / text-display / text-section / text-card）--- */
+  --text-hero: 72px;
+  --text-hero--line-height: 1.1;
+  --text-hero--font-weight: 700;
+  --text-display: 32px;
+  --text-display--line-height: 1.3;
+  --text-display--font-weight: 600;
+  --text-section: 24px;
+  --text-section--line-height: 1.4;
+  --text-section--font-weight: 600;
+  --text-card: 18px;
+  --text-card--line-height: 1.5;
+  --text-card--font-weight: 600;
+
+  /* --- 两种光影：浅色主题下层次主要靠阴影，必须用 --- */
+  --shadow-panel: 0 1px 2px rgba(15, 23, 42, 0.04), 0 4px 12px rgba(15, 23, 42, 0.06);
+  --shadow-glow: 0 0 0 2px rgba(22, 104, 220, 0.2), 0 4px 16px rgba(22, 104, 220, 0.16);
+}
+
+/* ============================================================================
+   基础样式
+   ============================================================================ */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden; /* 展厅大屏不出现滚动条 */
+  }
+
+  /* 数字统一用等宽，保证纵向对齐 */
+  .tnum {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 细滚动条（个别需要滚动的面板） */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}

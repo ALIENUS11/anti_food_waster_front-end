@@ -1,0 +1,32 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.claude/
+
+# 本地 Git CA 证书包（Watt Toolkit 中间人证书合并包），仅本机使用
+.git-certs/
+
+# 与本项目无关的第三方桌面应用（82 MB，含二进制模型资源）
+# 如需一并提交，删除下面一行即可
+desktop-creatures-main/
